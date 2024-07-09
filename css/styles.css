@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.container {
+  height: 1008px;
+  width: 802px;
+  display: flex;
+  flex-wrap: wrap;
+
+  & .square {
+    height: 16px;
+    width: 16px;
+    border: 0.5px solid #000;
+  }
+
+  & .big-square {
+    height: 32px;
+    width: 32px;
+    border: 0.5px solid #000;
+  }
+
+  & .big-square:hover {
+    cursor: pointer;
+  }
+}
+
+.btns {
+  margin-top: 20px;
+
+  & .btn {
+    padding: 1rem;
+    
+  }
+
+  & .btn:hover {
+    cursor: pointer;
+  }
+}
+
