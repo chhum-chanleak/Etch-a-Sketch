@@ -150,10 +150,12 @@ const controlTheGame = () => {
   const biggerSquaresButton = document.querySelector('.bigger-squares-btn');
   const smallerSquaresButton = document.querySelector('.smaller-squares-btn');
   const randomButton = document.querySelector('.random');
+  const multiColorsButton = document.querySelector('.multi-colors')
 
   biggerSquaresButton.addEventListener('click', hideAllSmallSquares);
   smallerSquaresButton.addEventListener('click', hideAllBigSquares);
   randomButton.addEventListener('click', applyRandomColors);
+  multiColorsButton.addEventListener('click', applyMultiColors)
 };
 
 // Generate random color 
@@ -171,6 +173,32 @@ const applyRandomColors = () => {
   changeTheColorOfTheSquareWhenHover(getRandomColors());
   changeTheColorOfTheBigSquareWhenHover(getRandomColors());
 };
+
+// Apply multi-color 
+const applyMultiColors = () => {
+  const smallSquares = getAllSmallSquares();
+  const bigSquares = getAllBigSquares();
+
+  for (let i = 0; i < smallSquares.length; i += 1) {
+    smallSquares[i].addEventListener('mouseover', () => {
+      smallSquares[i].style.backgroundColor = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
+    });
+  }
+
+  for (let i = 0; i < bigSquares.length; i += 1) {
+    bigSquares[i].addEventListener('mouseover', () => {
+      bigSquares[i].style.backgroundColor = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
+    });
+  }
+};
+
+// Get random numbers
+const getRandomNumber = () => {
+  const randomNumber = Math.floor(Math.random() * 225);
+  return randomNumber;
+};
+
+
 
 controlTheGame();
 fillTheContainer();
