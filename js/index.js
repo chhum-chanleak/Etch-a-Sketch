@@ -35,9 +35,9 @@ const changeTheColorOfTheSquareWhenHover = (color) => {
   for (let i = 0; i < squares.length; i += 1) {
     squares[i].addEventListener('mouseover', () => {
       squares[i].style.backgroundColor = `${color}`;
-    })
-    
+    })    
   }
+  applyOpacityToColoredSmallSquares();
 };
 
 // Get all small squares 
@@ -226,28 +226,7 @@ const getAllColoredBigSquares = () => {
   return coloredBigSquares;
 };
 
-// Apply opacity onto small squares
-const applyOpacityToColoredSmallSquares = () => {
-  const coloredSmallSquares = getAllColoredSmallSquares();
-
-  for (let i = 0; i < coloredSmallSquares.length; i += 1) {
-    coloredSmallSquares[i].addEventListener('mouseover', () => {
-      if (coloredSmallSquares[i].style.backgroundColor === 'rgba(225, 225, 0, 0.2)') {
-        coloredSmallSquares[i].style.backgroundColor = 'rgba(225, 225, 0, 0.6)';
-      }
-    });
-  }
-};
-
-// Apply events to all small squares
-const applyEventsToColoredSmallSquares = () => {
-  const coloredSmallSquares = getAllColoredSmallSquares();
-
-  for (let i = 0; i < coloredSmallSquares.length; i += 1) {
-      coloredSmallSquares[i].addEventListener('mouseover', applyOpacityToColoredSmallSquares);
-    }
-};
-
 controlTheGame();
 fillTheContainer();
+
 
