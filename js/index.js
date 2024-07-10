@@ -25,7 +25,7 @@ const fillTheContainer = () => {
   for (let i = 0; i < maxNumberOfSquares; i += 1) {
     container.appendChild(generateASmallSquare());
   }
-  changeTheColorOfTheSquareWhenHover(`rgba(225, 225, 0, 0.2)`);
+  changeTheColorOfTheSquareWhenHover(`rgba(225, 225, 0)`);
 };
 
 // Change the color of the square when hover
@@ -94,7 +94,7 @@ const fillTheContainerWithBiggerSquares = () => {
   for (let i = 0; i < maxNumberOfSquares; i += 1) {
     container.appendChild(generateABigSquare());
   }
-  changeTheColorOfTheBigSquareWhenHover(`rgba(225, 0, 0, 0.2)`);
+  changeTheColorOfTheBigSquareWhenHover(`rgba(225, 0, 0)`);
 };
 
 // Change the color of the big square when hover
