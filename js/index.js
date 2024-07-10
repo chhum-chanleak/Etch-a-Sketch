@@ -19,14 +19,13 @@ const fillTheContainer = () => {
     refreshSmallSquares();
     return;
   }
-
   const container = getContainer();
   let maxNumberOfSquares = 3150;
 
   for (let i = 0; i < maxNumberOfSquares; i += 1) {
     container.appendChild(generateASmallSquare());
   }
-  changeTheColorOfTheSquareWhenHover('#ff0');
+  changeTheColorOfTheSquareWhenHover(`rgba(225, 225, 0, 0.2)`);
 };
 
 // Change the color of the square when hover
@@ -37,6 +36,7 @@ const changeTheColorOfTheSquareWhenHover = (color) => {
     squares[i].addEventListener('mouseover', () => {
       squares[i].style.backgroundColor = `${color}`;
     })
+    
   }
 };
 
@@ -94,7 +94,7 @@ const fillTheContainerWithBiggerSquares = () => {
   for (let i = 0; i < maxNumberOfSquares; i += 1) {
     container.appendChild(generateABigSquare());
   }
-  changeTheColorOfTheBigSquareWhenHover('#f0f');
+  changeTheColorOfTheBigSquareWhenHover(`rgba(225, 0, 0, 0.2)`);
 };
 
 // Change the color of the big square when hover
@@ -198,9 +198,56 @@ const getRandomNumber = () => {
   return randomNumber;
 };
 
+// Get all colored squares small
+const getAllColoredSmallSquares = () => {
+  const smallSquares = getAllSmallSquares();
+  let coloredSmallSquares = [];
 
+  for (let i = 0; i < smallSquares.length; i += 1) {
+    if (smallSquares[i].style.backgroundColor !== '') {
+      coloredSmallSquares.push(smallSquares[i]);
+    }    
+  };
+
+  return coloredSmallSquares;
+};
+
+// Get all colored squares small or big
+const getAllColoredBigSquares = () => {
+  const bigSquares = getAllBigSquares();
+  let coloredBigSquares = [];
+
+  for (let i = 0; i < bigSquares.length; i += 1) {
+    if (bigSquares[i].style.backgroundColor !== '') {
+      coloredBigSquares.push(bigSquares[i]);
+    }
+  }
+
+  return coloredBigSquares;
+};
+
+// Apply opacity onto small squares
+const applyOpacityToColoredSmallSquares = () => {
+  const coloredSmallSquares = getAllColoredSmallSquares();
+
+  for (let i = 0; i < coloredSmallSquares.length; i += 1) {
+    coloredSmallSquares[i].addEventListener('mouseover', () => {
+      if (coloredSmallSquares[i].style.backgroundColor === 'rgba(225, 225, 0, 0.2)') {
+        coloredSmallSquares[i].style.backgroundColor = 'rgba(225, 225, 0, 0.6)';
+      }
+    });
+  }
+};
+
+// Apply events to all small squares
+const applyEventsToColoredSmallSquares = () => {
+  const coloredSmallSquares = getAllColoredSmallSquares();
+
+  for (let i = 0; i < coloredSmallSquares.length; i += 1) {
+      coloredSmallSquares[i].addEventListener('mouseover', applyOpacityToColoredSmallSquares);
+    }
+};
 
 controlTheGame();
 fillTheContainer();
-
 
