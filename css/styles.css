@@ -42,8 +42,7 @@ body {
   margin-top: 20px;
 
   & .btn {
-    padding: 1rem;
-    
+    padding: 1rem;    
   }
 
   & .btn:hover {
